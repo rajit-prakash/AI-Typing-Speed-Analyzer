@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "version":     "1.0.0",
+    "created":     "2026-06-11T00:00:00.000Z",
+    "description": "AI Typing Speed Analyzer — session database schema"
+  },
+
+  "schema": {
+    "session": {
+      "id":               "string  — unique session ID",
+      "date":             "string  — ISO 8601 timestamp",
+      "durationSetting":  "number  — chosen duration in seconds (30 | 60 | 120 | 300)",
+      "timeElapsed":      "number  — actual seconds spent before stopping",
+      "paragraph": {
+        "index": "number  — index of paragraph in paragraphs.js",
+        "text":  "string  — full paragraph text that was displayed"
+      },
+      "result": {
+        "wpm":      "number  — words per minute",
+        "accuracy": "number  — percentage 0-100",
+        "errors":   "number  — total character errors made"
+      }
+    }
+  },
+
+  "sessions": []
+}

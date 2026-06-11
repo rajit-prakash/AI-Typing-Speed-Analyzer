@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TypeTest — AI Typing Speed Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <header class="hdr">
+    <span class="logo">tt/</span>
+    <span class="logo-s">TypeTest</span>
+  </header>
+
+  <main class="wrap">
+
+    <!-- Stats bar -->
+    <div class="stats">
+      <div class="stat">
+        <span class="sv" id="time">60</span>
+        <span class="sk">sec left</span>
+      </div>
+      <div class="sdiv"></div>
+      <div class="stat">
+        <span class="sv" id="wpm">—</span>
+        <span class="sk">wpm</span>
+      </div>
+      <div class="sdiv"></div>
+      <div class="stat">
+        <span class="sv"><span id="accuracy">100</span>%</span>
+        <span class="sk">accuracy</span>
+      </div>
+      <div class="sdiv"></div>
+      <div class="stat">
+        <span class="sv" id="errors">0</span>
+        <span class="sk">errors</span>
+      </div>
+    </div>
+
+    <!-- Typing area -->
+    <div class="card">
+      <div id="paragraph" class="para"></div>
+      <textarea
+        id="input"
+        placeholder="press start — then type here"
+        disabled
+        spellcheck="false"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+      ></textarea>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="dur-g">
+        <button class="db on" data-val="30">30s</button>
+        <button class="db" data-val="60">60s</button>
+        <button class="db" data-val="120">2m</button>
+        <button class="db" data-val="300">5m</button>
+      </div>
+      <input type="hidden" id="duration" value="30">
+      <div class="act-g">
+        <button id="btn-start" class="btn bs" onclick="startTest()">Start</button>
+        <button id="btn-stop"  class="btn bp" onclick="stopTest()" disabled>Stop</button>
+        <button class="btn bg" onclick="restartTest()">Reset</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="res" id="result-area">
+      <div class="rh"><span class="rl">session complete</span></div>
+      <div class="rg">
+        <div class="rc"><span class="rn" id="finalWpm">—</span><span class="rd">words / min</span></div>
+        <div class="rc"><span class="rn" id="finalAccuracy">—</span><span class="rd">accuracy</span></div>
+        <div class="rc"><span class="rn" id="finalErrors">—</span><span class="rd">errors</span></div>
+      </div>
+      <div id="feedback" class="fb"></div>
+    </div>
+
+    <!-- History chart -->
+    <div class="chw" id="chart-wrap">
+      <p class="ct">wpm history</p>
+      <canvas id="scoreChart"></canvas>
+    </div>
+
+  </main>
+
+  <script src="paragraphs.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
